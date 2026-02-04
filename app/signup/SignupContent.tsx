@@ -52,9 +52,11 @@ export default function SignupContent() {
       });
 
       router.push(`/login?type=${userType}`);
-    } catch (error) {
-      alert("Signup failed. Try another username.");
-    } finally {
+    } catch (error: any) {
+  console.error("Firebase signup error:", error);
+  alert("Signup failed: " + error.message);
+}
+ finally {
       setLoading(false);
     }
   }
